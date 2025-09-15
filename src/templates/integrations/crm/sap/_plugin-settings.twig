@@ -1,0 +1,155 @@
+{#
+ # SAP Integration for Formie - Craft CMS 5.x
+ #
+ # Global plugin settings template
+ #
+ # @link      https://lindemannrock.com
+ # @copyright Copyright (c) 2025 LindemannRock
+ #}
+
+{% import '_includes/forms' as forms %}
+{% import 'verbb-base/_macros' as macros %}
+
+{% set displayName = integration.displayName() %}
+
+{% set instructions %}
+### Step 1. Configure SAP Integration
+1. Contact your SAP administrator to obtain OAuth credentials.
+1. You'll need:
+   - **Client ID** - Your OAuth application client ID
+   - **Client Secret** - Your OAuth application client secret
+   - **Environment** - Choose between staging or production
+   - **API Endpoint** - The specific endpoint for form submissions (e.g., `/customer-feedback`)
+
+### Step 2. Test Connection
+1. Save this integration.
+1. Click on the **Refresh** button in the right-hand sidebar.
+{% endset %}
+
+<div class="fui-settings-block">
+    {{ instructions | t('formie', { name: displayName }) | md }}
+</div>
+
+{% if not craft.app.config.general.allowAdminChanges %}
+    <span class="warning with-icon">
+        {{ 'Integration settings can only be editable on an environment with `allowAdminChanges` enabled.' | t('formie') | md(inlineOnly=true) }}
+    </span>
+{% endif %}
+
+{{ forms.autosuggestField({
+    label: 'Client ID' | t('formie'),
+    instructions: 'Enter your SAP OAuth Client ID.' | t('formie'),
+    name: 'clientId',
+    required: true,
+    suggestEnvVars: true,
+    suggestAliases: true,
+    value: integration.settings.clientId ?? '',
+    warning: macros.configWarning('clientId', 'formie'),
+    errors: integration.getErrors('clientId'),
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'Client Secret' | t('formie'),
+    instructions: 'Enter your SAP OAuth Client Secret.' | t('formie'),
+    name: 'clientSecret',
+    required: true,
+    suggestEnvVars: true,
+    suggestAliases: true,
+    value: integration.settings.clientSecret ?? '',
+    warning: macros.configWarning('clientSecret', 'formie'),
+    errors: integration.getErrors('clientSecret'),
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'Environment' | t('formie'),
+    instructions: 'Enter the SAP environment to connect to (staging or production).' | t('formie'),
+    name: 'environment',
+    suggestEnvVars: true,
+    suggestAliases: true,
+    value: integration.settings.environment ?? 'staging',
+    placeholder: 'staging',
+    warning: macros.configWarning('environment', 'formie'),
+    errors: integration.getErrors('environment'),
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'Staging API URL' | t('formie'),
+    instructions: 'Enter the base URL for the staging API (e.g., https://staging-api.sap.com/v1).' | t('formie'),
+    name: 'stagingUrl',
+    suggestEnvVars: true,
+    suggestAliases: true,
+    value: integration.settings.stagingUrl ?? '',
+    placeholder: 'https://staging-api.sap.com/v1',
+    warning: macros.configWarning('stagingUrl', 'formie'),
+    errors: integration.getErrors('stagingUrl'),
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'Production API URL' | t('formie'),
+    instructions: 'Enter the base URL for the production API (e.g., https://production-api.sap.com/v1).' | t('formie'),
+    name: 'productionUrl',
+    suggestEnvVars: true,
+    suggestAliases: true,
+    value: integration.settings.productionUrl ?? '',
+    placeholder: 'https://production-api.sap.com/v1',
+    warning: macros.configWarning('productionUrl', 'formie'),
+    errors: integration.getErrors('productionUrl'),
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'API Endpoint' | t('formie'),
+    instructions: 'Enter the SAP API endpoint path (e.g., /customer-feedback).' | t('formie'),
+    name: 'apiEndpoint',
+    suggestEnvVars: true,
+    suggestAliases: true,
+    value: integration.settings.apiEndpoint ?? '/customer-feedback',
+    warning: macros.configWarning('apiEndpoint', 'formie'),
+    errors: integration.getErrors('apiEndpoint'),
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'OAuth Scope' | t('formie'),
+    instructions: 'Enter the OAuth scopes required, comma-separated.' | t('formie'),
+    name: 'oauthScope',
+    suggestEnvVars: true,
+    suggestAliases: true,
+    value: integration.settings.oauthScope ?? 'customer_data:write,forms:submit',
+    warning: macros.configWarning('oauthScope', 'formie'),
+    errors: integration.getErrors('oauthScope'),
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'OAuth Authorization URL' | t('formie'),
+    instructions: 'Enter the SAP OAuth authorization URL (e.g., https://api.sap.com/oauth/authorize).' | t('formie'),
+    name: 'oauthAuthorizeUrl',
+    suggestEnvVars: true,
+    suggestAliases: true,
+    value: integration.settings.oauthAuthorizeUrl ?? '',
+    placeholder: 'https://api.sap.com/oauth/authorize',
+    warning: macros.configWarning('oauthAuthorizeUrl', 'formie'),
+    errors: integration.getErrors('oauthAuthorizeUrl'),
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'OAuth Token URL' | t('formie'),
+    instructions: 'Enter the SAP OAuth token URL (e.g., https://api.sap.com/oauth/token).' | t('formie'),
+    name: 'oauthTokenUrl',
+    suggestEnvVars: true,
+    suggestAliases: true,
+    value: integration.settings.oauthTokenUrl ?? '',
+    placeholder: 'https://api.sap.com/oauth/token',
+    warning: macros.configWarning('oauthTokenUrl', 'formie'),
+    errors: integration.getErrors('oauthTokenUrl'),
+}) }}
+
+{{ forms.autosuggestField({
+    label: 'OAuth Redirect URI' | t('formie'),
+    instructions: 'Enter a custom OAuth redirect URI if needed. Leave empty to use Craft\'s default.' | t('formie'),
+    name: 'redirectUri',
+    suggestEnvVars: true,
+    suggestAliases: true,
+    value: integration.settings.redirectUri ?? '',
+    placeholder: 'https://yoursite.com/actions/formie/integrations/callback',
+    warning: macros.configWarning('redirectUri', 'formie'),
+    errors: integration.getErrors('redirectUri'),
+}) }}

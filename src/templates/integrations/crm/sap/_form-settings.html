@@ -1,0 +1,78 @@
+{#
+ # SAP Integration for Formie - Craft CMS 5.x
+ #
+ # Per-form integration settings template
+ #
+ # @link      https://lindemannrock.com
+ # @copyright Copyright (c) 2025 LindemannRock
+ #}
+
+{% import '_includes/forms' as forms %}
+
+<div class="field">
+    <div class="heading">
+        <label>{{ 'Header Field Mapping' | t('formie') }}</label>
+        <div class="instructions">
+            <p>{{ 'Select which form fields should be mapped to the header fields (memberID, memberMobile, memberEmail, invoiceID) in the SAP payload.' | t('formie') }}</p>
+        </div>
+    </div>
+</div>
+
+{{ forms.selectField({
+    label: 'Member ID Field' | t('formie'),
+    instructions: 'Select the field that contains the member ID.' | t('formie'),
+    name: 'memberIdField',
+    value: integration.settings.memberIdField ?? '',
+    options: [{label: '- None -', value: ''}]|merge(form.getCustomFields()|map(field => {
+        label: field.label ~ ' (' ~ field.handle ~ ')',
+        value: field.handle
+    })),
+    errors: integration.getErrors('memberIdField'),
+}) }}
+
+{{ forms.selectField({
+    label: 'Member Mobile Field' | t('formie'),
+    instructions: 'Select the field that contains the mobile number.' | t('formie'),
+    name: 'memberMobileField',
+    value: integration.settings.memberMobileField ?? '',
+    options: [{label: '- None -', value: ''}]|merge(form.getCustomFields()|map(field => {
+        label: field.label ~ ' (' ~ field.handle ~ ')',
+        value: field.handle
+    })),
+    errors: integration.getErrors('memberMobileField'),
+}) }}
+
+{{ forms.selectField({
+    label: 'Member Email Field' | t('formie'),
+    instructions: 'Select the field that contains the email address.' | t('formie'),
+    name: 'memberEmailField',
+    value: integration.settings.memberEmailField ?? '',
+    options: [{label: '- None -', value: ''}]|merge(form.getCustomFields()|map(field => {
+        label: field.label ~ ' (' ~ field.handle ~ ')',
+        value: field.handle
+    })),
+    errors: integration.getErrors('memberEmailField'),
+}) }}
+
+{{ forms.selectField({
+    label: 'Invoice ID Field' | t('formie'),
+    instructions: 'Select the field that contains the invoice ID.' | t('formie'),
+    name: 'invoiceIdField',
+    value: integration.settings.invoiceIdField ?? '',
+    options: [{label: '- None -', value: ''}]|merge(form.getCustomFields()|map(field => {
+        label: field.label ~ ' (' ~ field.handle ~ ')',
+        value: field.handle
+    })),
+    errors: integration.getErrors('invoiceIdField'),
+}) }}
+
+<hr>
+
+<div class="field">
+    <div class="heading">
+        <label>{{ 'Additional Information' | t('formie') }}</label>
+        <div class="instructions">
+            <p>{{ 'All form fields will be automatically included in the payload\'s fields array. The above mappings only affect which fields appear in the header.' | t('formie') }}</p>
+        </div>
+    </div>
+</div>
