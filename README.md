@@ -26,7 +26,7 @@ Until published on Packagist, install directly from the repository:
 
 ```bash
 cd /path/to/project
-composer config repositories.formie-sap-integration vcs https://github.com/LindemannRock/formie-sap-integration
+composer config repositories.formie-sap-integration vcs https://github.com/LindemannRock/craft-formie-sap-integration
 composer require lindemannrock/formie-sap-integration:dev-main
 ./craft plugin/install formie-sap-integration
 ```
@@ -218,8 +218,8 @@ See [SAP_API_TEST_GUIDE.md](SAP_API_TEST_GUIDE.md) for comprehensive testing ins
 
 ## Support
 
-- **Documentation**: [https://github.com/LindemannRock/formie-sap-integration](https://github.com/LindemannRock/formie-sap-integration)
-- **Issues**: [https://github.com/LindemannRock/formie-sap-integration/issues](https://github.com/LindemannRock/formie-sap-integration/issues)
+- **Documentation**: [https://github.com/LindemannRock/craft-formie-sap-integration](https://github.com/LindemannRock/craft-formie-sap-integration)
+- **Issues**: [https://github.com/LindemannRock/craft-formie-sap-integration/issues](https://github.com/LindemannRock/craft-formie-sap-integration/issues)
 - **Email**: [support@lindemannrock.com](mailto:support@lindemannrock.com)
 
 ## License

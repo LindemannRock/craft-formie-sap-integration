@@ -1,5 +1,5 @@
 {
-    "name": "lindemannrock/formie-sap-integration",
+    "name": "lindemannrock/craft-formie-sap-integration",
     "description": "SAP Cloud integration for Formie - Automatically sends form submissions to SAP Cloud Platform",
     "type": "craft-plugin",
     "version": "1.0.0",
@@ -20,6 +20,12 @@
             "homepage": "https://lindemannrock.com"
         }
     ],
+    "support": {
+        "email": "support@lindemannrock.com",
+        "issues": "https://github.com/LindemannRock/craft-formie-sap-integration/issues",
+        "source": "https://github.com/LindemannRock/craft-formie-sap-integration",
+        "docs": "https://github.com/LindemannRock/craft-formie-sap-integration/blob/main/README.md"
+    },
     "require": {
         "php": "^8.2",
         "craftcms/cms": "^5.0.0",
@@ -36,8 +42,8 @@
         "handle": "formie-sap-integration",
         "developer": "LindemannRock",
         "developerUrl": "https://lindemannrock.com",
-        "documentationUrl": "https://github.com/lindemannrock/formie-sap-integration/blob/master/README.md",
-        "changelogUrl": "https://github.com/lindemannrock/formie-sap-integration/blob/master/CHANGELOG.md",
+        "documentationUrl": "https://github.com/LindemannRock/craft-formie-sap-integration/blob/main/README.md",
+        "changelogUrl": "https://github.com/LindemannRock/craft-formie-sap-integration/blob/main/CHANGELOG.md",
         "class": "lindemannrock\\formiesapintegration\\FormieSapIntegration"
     }
 }
