@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v1.0.0...v1.0.1) (2025-09-24)
+
+
+### Bug Fixes
+
+* update repository references and improve .gitignore entries ([035f89d](https://github.com/LindemannRock/craft-formie-sap-integration/commit/035f89dfab0c090db24336713609e710fa241854))
+
 ## 1.0.0 (2025-09-15)
 
 
