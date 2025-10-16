@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v1.0.1...v1.0.2) (2025-10-16)
+
+
+### Bug Fixes
+
+* update author details and add RSS feed to support section in composer.json ([7bd906b](https://github.com/LindemannRock/craft-formie-sap-integration/commit/7bd906b17844e25e30761a1a58090f4e95680c6c))
+
 ## [1.0.1](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v1.0.0...v1.0.1) (2025-09-24)
 
 
