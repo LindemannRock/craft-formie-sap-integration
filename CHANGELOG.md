@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v1.0.2...v1.0.3) (2025-10-16)
+
+
+### Bug Fixes
+
+* change license from proprietary to MIT in composer.json ([4223edd](https://github.com/LindemannRock/craft-formie-sap-integration/commit/4223edd75ca9ee4ec7c383e5bce25cefcfe08d4f))
+
 ## [1.0.2](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v1.0.1...v1.0.2) (2025-10-16)
 
 
