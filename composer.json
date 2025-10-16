@@ -2,7 +2,7 @@
     "name": "lindemannrock/craft-formie-sap-integration",
     "description": "SAP Cloud integration for Formie - Automatically sends form submissions to SAP Cloud Platform",
     "type": "craft-plugin",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "keywords": [
         "craft",
         "cms",

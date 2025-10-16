@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v1.0.3...v1.0.4) (2025-10-16)
+
+
+### Bug Fixes
+
+* update installation instructions for Composer and DDEV ([d591942](https://github.com/LindemannRock/craft-formie-sap-integration/commit/d591942642f8d6161efd8b228aa7704feea58819))
+
 ## [1.0.3](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v1.0.2...v1.0.3) (2025-10-16)
 
 
