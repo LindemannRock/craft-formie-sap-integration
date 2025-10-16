@@ -20,32 +20,25 @@ A Craft CMS plugin that integrates Verbb's Formie with SAP Cloud Platform, enabl
 
 ## Installation
 
-### Via Composer (Development)
-
-Until published on Packagist, install directly from the repository:
+### Via Composer
 
 ```bash
 cd /path/to/project
-composer config repositories.formie-sap-integration vcs https://github.com/LindemannRock/craft-formie-sap-integration
-composer require lindemannrock/formie-sap-integration:dev-main
+composer require lindemannrock/craft-formie-sap-integration
 ./craft plugin/install formie-sap-integration
 ```
 
-### Via Composer (Production - Coming Soon)
-
-Once published on Packagist:
+### Using DDEV
 
 ```bash
 cd /path/to/project
-composer require lindemannrock/formie-sap-integration
-./craft plugin/install formie-sap-integration
+ddev composer require lindemannrock/craft-formie-sap-integration
+ddev craft plugin/install formie-sap-integration
 ```
 
-### Via Plugin Store (Future)
+### Via Control Panel
 
-1. Go to the Plugin Store in your Craft control panel
-2. Search for "Formie SAP Integration"
-3. Click "Install"
+In the Control Panel, go to Settings → Plugins and click "Install" for Formie SAP Integration.
 
 ## Environment Configuration
 
