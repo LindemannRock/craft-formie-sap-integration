@@ -1,5 +1,11 @@
 # Formie SAP Integration Plugin
 
+[![Latest Version](https://img.shields.io/packagist/v/lindemannrock/craft-formie-sap-integration.svg)](https://packagist.org/packages/lindemannrock/craft-formie-sap-integration)
+[![Craft CMS](https://img.shields.io/badge/Craft%20CMS-5.0+-orange.svg)](https://craftcms.com/)
+[![Formie](https://img.shields.io/badge/Formie-3.0+-purple.svg)](https://verbb.io/craft-plugins/formie)
+[![PHP](https://img.shields.io/badge/PHP-8.2+-blue.svg)](https://php.net/)
+[![License](https://img.shields.io/packagist/l/lindemannrock/craft-formie-sap-integration.svg)](LICENSE)
+
 A Craft CMS plugin that integrates Verbb's Formie with SAP Cloud Platform, enabling automatic submission of form data using SAP's dynamic schema format with OAuth 2.0 authentication.
 
 ## Requirements
