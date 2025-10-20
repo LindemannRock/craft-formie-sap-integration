@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.0.0...v3.0.1) (2025-10-20)
+
+
+### Miscellaneous Chores
+
+* update README with additional badges ([2d8b995](https://github.com/LindemannRock/craft-formie-sap-integration/commit/2d8b995cdd3b105587b45a205aa58bd927ac9872))
+
 ## [3.0.0](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v1.0.4...v3.0.0) (2025-10-20)
 
 
