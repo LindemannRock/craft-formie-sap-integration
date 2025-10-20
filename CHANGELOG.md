@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.0](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v1.0.4...v3.0.0) (2025-10-20)
+
+
+### Miscellaneous Chores
+
+* bump version scheme to match Formie 3 ([1dd01cd](https://github.com/LindemannRock/craft-formie-sap-integration/commit/1dd01cd3750126d9ca5ad37dc81a0ccb3df24f00))
+
 ## [1.0.4](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v1.0.3...v1.0.4) (2025-10-16)
 
 
