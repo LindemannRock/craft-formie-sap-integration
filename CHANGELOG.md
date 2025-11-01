@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.3](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.0.2...v3.0.3) (2025-11-01)
+
+
+### Bug Fixes
+
+* update validation method names for consistency and improve formatting in settings ([63f2a27](https://github.com/LindemannRock/craft-formie-sap-integration/commit/63f2a27f50f2fd3c3c8848b8193f0db9be47dd12))
+
 ## [3.0.2](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.0.1...v3.0.2) (2025-10-27)
 
 
