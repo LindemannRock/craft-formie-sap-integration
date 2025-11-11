@@ -30,7 +30,13 @@ A Craft CMS plugin that integrates Verbb's Formie with SAP Cloud Platform, enabl
 
 ```bash
 cd /path/to/project
+```
+
+```bash
 composer require lindemannrock/craft-formie-sap-integration
+```
+
+```bash
 ./craft plugin/install formie-sap-integration
 ```
 
@@ -38,7 +44,13 @@ composer require lindemannrock/craft-formie-sap-integration
 
 ```bash
 cd /path/to/project
+```
+
+```bash
 ddev composer require lindemannrock/craft-formie-sap-integration
+```
+
+```bash
 ddev craft plugin/install formie-sap-integration
 ```
 
