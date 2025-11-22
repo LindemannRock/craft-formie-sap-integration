@@ -62,7 +62,7 @@ class Sap extends Crm
      */
     public function getAuthorizeUrl(): string
     {
-        $url = App::parseEnv($this->oauthAuthorizeUrl);
+        $url = App::env($this->oauthAuthorizeUrl);
         if ($url) {
             return $url;
         }
@@ -75,7 +75,7 @@ class Sap extends Crm
      */
     public function getAccessTokenUrl(): string
     {
-        $url = App::parseEnv($this->oauthTokenUrl);
+        $url = App::env($this->oauthTokenUrl);
         if ($url) {
             return $url;
         }
@@ -88,7 +88,7 @@ class Sap extends Crm
      */
     public function getRedirectUri(): string
     {
-        return App::parseEnv($this->redirectUri) ?: parent::getRedirectUri();
+        return App::env($this->redirectUri) ?: parent::getRedirectUri();
     }
 
     /**
@@ -96,7 +96,7 @@ class Sap extends Crm
      */
     public function getClientId(): string
     {
-        return App::parseEnv($this->clientId) ?: '';
+        return App::env($this->clientId) ?: '';
     }
 
     /**
@@ -104,7 +104,7 @@ class Sap extends Crm
      */
     public function getClientSecret(): string
     {
-        return App::parseEnv($this->clientSecret) ?: '';
+        return App::env($this->clientSecret) ?: '';
     }
 
     /**
@@ -454,16 +454,16 @@ class Sap extends Crm
      */
     private function getApiBaseUrl(): string
     {
-        $env = App::parseEnv($this->environment) ?: 'staging';
+        $env = App::env($this->environment) ?: 'staging';
         
         if ($env === 'production') {
-            $url = App::parseEnv($this->productionUrl);
+            $url = App::env($this->productionUrl);
             if ($url) {
                 return rtrim($url, '/');
             }
         }
         
-        $url = App::parseEnv($this->stagingUrl);
+        $url = App::env($this->stagingUrl);
         if ($url) {
             return rtrim($url, '/');
         }
@@ -489,8 +489,8 @@ class Sap extends Crm
             }
         } else {
             // Basic auth fallback
-            $clientId = App::parseEnv($this->clientId);
-            $clientSecret = App::parseEnv($this->clientSecret);
+            $clientId = App::env($this->clientId);
+            $clientSecret = App::env($this->clientSecret);
             
             if ($clientId && $clientSecret) {
                 $headers['Authorization'] = 'Basic ' . base64_encode($clientId . ':' . $clientSecret);
