@@ -26,13 +26,12 @@ use verbb\formie\base\Crm;
 use verbb\formie\base\Integration;
 use verbb\formie\elements\Form;
 use verbb\formie\elements\Submission;
-use verbb\formie\models\IntegrationFormSettings;
 use verbb\formie\models\IntegrationField;
-use verbb\formie\models\Stencil;
+use verbb\formie\models\IntegrationFormSettings;
 
 /**
  * SAP CRM Integration for Formie
- * 
+ *
  * @author LindemannRock
  * @since 1.0.0
  */
@@ -366,7 +365,6 @@ class Sap extends Crm
             ]));
             
             return false;
-            
         } catch (\Throwable $e) {
             Integration::apiError($this, $e);
             
@@ -413,7 +411,6 @@ class Sap extends Crm
             
             Integration::error($this, 'Connection test failed with status code: ' . $statusCode);
             return false;
-            
         } catch (\Throwable $e) {
             Integration::apiError($this, $e);
             
@@ -469,8 +466,8 @@ class Sap extends Crm
         }
         
         // Default URLs if not configured
-        return $env === 'production' ? 
-            'https://production-api.sap.com/v1' : 
+        return $env === 'production' ?
+            'https://production-api.sap.com/v1' :
             'https://staging-api.sap.com/v1';
     }
 

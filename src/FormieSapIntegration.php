@@ -11,12 +11,12 @@
 namespace lindemannrock\formiesapintegration;
 
 use Craft;
-use lindemannrock\formiesapintegration\integrations\crm\Sap;
-use lindemannrock\formiesapintegration\models\Settings;
 use craft\base\Model;
 use craft\base\Plugin;
 use craft\events\RegisterTemplateRootsEvent;
 use craft\web\View;
+use lindemannrock\formiesapintegration\integrations\crm\Sap;
+use lindemannrock\formiesapintegration\models\Settings;
 use verbb\formie\events\RegisterIntegrationsEvent;
 use verbb\formie\services\Integrations;
 use yii\base\Event;
