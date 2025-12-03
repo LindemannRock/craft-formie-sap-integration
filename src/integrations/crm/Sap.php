@@ -320,7 +320,8 @@ class Sap extends Crm
                 ]);
             }
         } catch (\Throwable $e) {
-            Integration::apiError($this, $e);
+            $exception = $e instanceof \Exception ? $e : new \Exception($e->getMessage(), (int)$e->getCode(), $e);
+            Integration::apiError($this, $exception);
         }
 
         return new IntegrationFormSettings($settings);
@@ -366,8 +367,9 @@ class Sap extends Crm
             
             return false;
         } catch (\Throwable $e) {
-            Integration::apiError($this, $e);
-            
+            $exception = $e instanceof \Exception ? $e : new \Exception($e->getMessage(), (int)$e->getCode(), $e);
+            Integration::apiError($this, $exception);
+
             return false;
         }
     }
@@ -412,8 +414,9 @@ class Sap extends Crm
             Integration::error($this, 'Connection test failed with status code: ' . $statusCode);
             return false;
         } catch (\Throwable $e) {
-            Integration::apiError($this, $e);
-            
+            $exception = $e instanceof \Exception ? $e : new \Exception($e->getMessage(), (int)$e->getCode(), $e);
+            Integration::apiError($this, $exception);
+
             return false;
         }
     }
@@ -563,37 +566,6 @@ class Sap extends Crm
     }
 
     /**
-     * Generate entity payload
-     */
-    private function generateEntityPayload(Submission $submission, string $entity, array $mapping): array
-    {
-        $entityPayload = [];
-        
-        foreach ($mapping as $sapField => $formieField) {
-            if (empty($formieField)) {
-                continue;
-            }
-            
-            $value = $submission->getFieldValue($formieField);
-            
-            if ($value !== null) {
-                $entityPayload[$sapField] = $this->processFieldValue($value);
-            }
-        }
-        
-        // Add metadata
-        $entityPayload['_metadata'] = [
-            'formId' => $submission->form->id,
-            'formTitle' => $submission->form->title,
-            'submissionId' => $submission->id,
-            'submissionDate' => $submission->dateCreated->format('c'),
-            'source' => 'Craft CMS Formie',
-        ];
-        
-        return $entityPayload;
-    }
-
-    /**
      * Process field value for SAP API
      */
     private function processFieldValue($value)
@@ -707,9 +679,14 @@ class Sap extends Crm
                     $processedValue = $this->processFieldValue($value);
                     
                     // Build field data
+                    $label = $handle;
+                    if (property_exists($field, 'label') && isset($field->label)) {
+                        $label = $field->label;
+                    }
+
                     $fieldData = [
                         'handle' => $handle,
-                        'label' => $field->label,
+                        'label' => $label,
                         'type' => $fieldType,
                         'value' => $processedValue,
                     ];

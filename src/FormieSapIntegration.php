@@ -36,7 +36,7 @@ class FormieSapIntegration extends Plugin
     /**
      * @var FormieSapIntegration|null Singleton plugin instance
      */
-    public static FormieSapIntegration $plugin;
+    public static ?FormieSapIntegration $plugin = null;
 
     /**
      * @var string Plugin schema version for migrations
@@ -86,7 +86,7 @@ class FormieSapIntegration extends Plugin
         
         // Set the plugin name from settings
         $settings = $this->getSettings();
-        if ($settings && !empty($settings->pluginName)) {
+        if (!empty($settings->pluginName)) {
             $this->name = $settings->pluginName;
         }
 
