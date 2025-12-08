@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.1.0](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.0.3...v3.1.0) (2025-12-04)
+
+
+### Features
+
+* add PHPStan and EasyCodingStandard configurations for improved code quality ([51d02f1](https://github.com/LindemannRock/craft-formie-sap-integration/commit/51d02f1096c22c02880af837c4b12a25a8814592))
+
+
+### Bug Fixes
+
+* replace App::parseEnv with App::env for environment variable retrieval in Sap class ([fcf2919](https://github.com/LindemannRock/craft-formie-sap-integration/commit/fcf291953470a4a54df6cf467c88776e90b864bc))
+* update docblocks for clarity and consistency in FormieSapIntegration class ([d741a64](https://github.com/LindemannRock/craft-formie-sap-integration/commit/d741a648c6abdebdd7bdfbe09b6610fc49497783))
+* update error handling in Sap class and refactor plugin property initialization ([ff67bc2](https://github.com/LindemannRock/craft-formie-sap-integration/commit/ff67bc2b41490cce861b52a8eefbd96e592ea070))
+
 ## [3.0.3](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.0.2...v3.0.3) (2025-11-01)
 
 
