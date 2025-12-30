@@ -8,6 +8,14 @@
 
 A Craft CMS plugin that integrates Verbb's Formie with SAP Cloud Platform, enabling automatic submission of form data using SAP's dynamic schema format with OAuth 2.0 authentication.
 
+## ⚠️ Beta Notice
+
+This plugin is currently in active development and provided under the MIT License for testing purposes.
+
+**Licensing is subject to change.** We are finalizing our licensing structure and some or all features may require a paid license when officially released on the Craft Plugin Store. Some plugins may remain free, others may offer free and Pro editions, or be fully commercial.
+
+If you are using this plugin, please be aware that future versions may have different licensing terms.
+
 ## Requirements
 
 - Craft CMS 5.0 or greater
