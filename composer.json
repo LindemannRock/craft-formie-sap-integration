@@ -1,60 +1,61 @@
 {
-    "name": "lindemannrock/craft-formie-sap-integration",
-    "description": "SAP Cloud integration for Formie - Automatically sends form submissions to SAP Cloud Platform",
-    "type": "craft-plugin",
-    "version": "3.1.0",
-    "keywords": [
-        "craft",
-        "cms",
-        "craftcms",
-        "craft-plugin",
-        "formie",
-        "sap",
-        "integration",
-        "crm"
-    ],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Bilal Hary Lindemann",
-            "email": "bh@lindemannrock.com",
-            "homepage": "https://lindemannrock.com",
-            "role": "Developer"
-        }
-    ],
-    "support": {
-        "email": "support@lindemannrock.com",
-        "issues": "https://github.com/LindemannRock/craft-formie-sap-integration/issues",
-        "source": "https://github.com/LindemannRock/craft-formie-sap-integration",
-        "docs": "https://github.com/LindemannRock/craft-formie-sap-integration/blob/main/README.md",
-        "rss": "https://github.com/LindemannRock/craft-formie-sap-integration/commits/main.atom"
-    },
-    "require": {
-        "php": "^8.2",
-        "craftcms/cms": "^5.0.0",
-        "verbb/formie": "^3.0.0",
-        "guzzlehttp/guzzle": "^7.0"
-    },
-    "require-dev": {
-        "craftcms/phpstan": "dev-main"
-    },
-    "autoload": {
-        "psr-4": {
-            "lindemannrock\\formiesapintegration\\": "src/"
-        }
-    },
-    "scripts": {
-        "phpstan": "phpstan --ansi --memory-limit=1G",
-        "check-cs": "ecs check --ansi",
-        "fix-cs": "ecs check --fix --ansi"
-    },
-    "extra": {
-        "name": "Formie SAP Integration",
-        "handle": "formie-sap-integration",
-        "developer": "LindemannRock",
-        "developerUrl": "https://lindemannrock.com",
-        "documentationUrl": "https://github.com/LindemannRock/craft-formie-sap-integration/blob/main/README.md",
-        "changelogUrl": "https://github.com/LindemannRock/craft-formie-sap-integration/blob/main/CHANGELOG.md",
-        "class": "lindemannrock\\formiesapintegration\\FormieSapIntegration"
-    }
+	"name": "lindemannrock/craft-formie-sap-integration",
+	"description": "SAP Cloud integration for Formie - Automatically sends form submissions to SAP Cloud Platform",
+	"type": "craft-plugin",
+	"version": "3.1.0",
+	"keywords": [
+		"craft",
+		"cms",
+		"craftcms",
+		"craft-plugin",
+		"formie",
+		"sap",
+		"integration",
+		"crm"
+	],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Bilal Hary Lindemann",
+			"email": "bh@lindemannrock.com",
+			"homepage": "https://lindemannrock.com",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"email": "support@lindemannrock.com",
+		"issues": "https://github.com/LindemannRock/craft-formie-sap-integration/issues",
+		"source": "https://github.com/LindemannRock/craft-formie-sap-integration",
+		"docs": "https://github.com/LindemannRock/craft-formie-sap-integration/blob/main/README.md",
+		"rss": "https://github.com/LindemannRock/craft-formie-sap-integration/commits/main.atom"
+	},
+	"require": {
+		"php": "^8.2",
+		"craftcms/cms": "^5.0.0",
+		"verbb/formie": "^3.0.0",
+		"guzzlehttp/guzzle": "^7.0"
+	},
+	"require-dev": {
+		"craftcms/ecs": "dev-main",
+		"craftcms/phpstan": "dev-main"
+	},
+	"autoload": {
+		"psr-4": {
+			"lindemannrock\\formiesapintegration\\": "src/"
+		}
+	},
+	"scripts": {
+		"phpstan": "phpstan --ansi --memory-limit=1G",
+		"check-cs": "ecs check --ansi",
+		"fix-cs": "ecs check --fix --ansi"
+	},
+	"extra": {
+		"name": "Formie SAP Integration",
+		"handle": "formie-sap-integration",
+		"developer": "LindemannRock",
+		"developerUrl": "https://lindemannrock.com",
+		"documentationUrl": "https://github.com/LindemannRock/craft-formie-sap-integration/blob/main/README.md",
+		"changelogUrl": "https://github.com/LindemannRock/craft-formie-sap-integration/blob/main/CHANGELOG.md",
+		"class": "lindemannrock\\formiesapintegration\\FormieSapIntegration"
+	}
 }
