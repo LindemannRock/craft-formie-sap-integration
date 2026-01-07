@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.1](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.1.0...v3.1.1) (2026-01-07)
+
+
+### Miscellaneous Chores
+
+* update composer.json for improved development dependencies ([b605fbd](https://github.com/LindemannRock/craft-formie-sap-integration/commit/b605fbdb8b41c37ed6036f6975579ad8477b87ca))
+
 ## [3.1.0](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.0.3...v3.1.0) (2025-12-04)
 
 
