@@ -15,6 +15,7 @@ use craft\base\Model;
 use craft\base\Plugin;
 use craft\events\RegisterTemplateRootsEvent;
 use craft\web\View;
+use lindemannrock\base\helpers\PluginHelper;
 use lindemannrock\formiesapintegration\integrations\crm\Sap;
 use lindemannrock\formiesapintegration\models\Settings;
 use verbb\formie\events\RegisterIntegrationsEvent;
@@ -55,6 +56,9 @@ class FormieSapIntegration extends Plugin
     {
         parent::init();
         self::$plugin = $this;
+
+        // Bootstrap the base plugin helper
+        PluginHelper::bootstrap($this, 'formieSapIntegrationHelper');
 
         // Set the alias for this plugin
         Craft::setAlias('@lindemannrock/formiesapintegration', __DIR__);
