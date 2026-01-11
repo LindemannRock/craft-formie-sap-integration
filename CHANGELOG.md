@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.2.0](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.1.0...v3.2.0) (2026-01-11)
+
+
+### Features
+
+* bootstrap base plugin helper in FormieSapIntegration ([b671b8d](https://github.com/LindemannRock/craft-formie-sap-integration/commit/b671b8d9b26e47b70027d247c24d67285307b63c))
+
+
+### Bug Fixes
+
+* update Settings model to include traits and improve plugin handle method ([bfdc5f6](https://github.com/LindemannRock/craft-formie-sap-integration/commit/bfdc5f6c0ccecd89260a8ef7f39a466f78185efd))
+
+
+### Miscellaneous Chores
+
+* update composer.json for improved development dependencies ([b605fbd](https://github.com/LindemannRock/craft-formie-sap-integration/commit/b605fbdb8b41c37ed6036f6975579ad8477b87ca))
+
 ## [3.1.0](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.0.3...v3.1.0) (2025-12-04)
 
 
