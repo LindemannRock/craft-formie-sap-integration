@@ -7,6 +7,14 @@
 
 {% import "_includes/forms" as forms %}
 
+{% if settings is defined and settings.hasErrors() %}
+    {{ include('lindemannrock-base/_partials/error-summary', {
+        errors: settings.getErrors(),
+        translationCategory: 'formie-sap-integration',
+        linkMode: 'field-id',
+    }) }}
+{% endif %}
+
 <fieldset style="margin-top: 0;">
 	<h2>{{ 'General Settings'|t('formie-sap-integration') }}</h2>
 
@@ -18,7 +26,8 @@
         value: settings.pluginName ?? 'Formie SAP Integration',
         placeholder: 'Formie SAP Integration',
         warning: settings.isOverriddenByConfig('pluginName') ? 'This is being overridden by the `pluginName` setting in the `config/formie-sap-integration.php` file.'|t('formie-sap-integration'),
-        disabled: settings.isOverriddenByConfig('pluginName')
+        disabled: settings.isOverriddenByConfig('pluginName'),
+        errors: settings.getErrors('pluginName')
     }) }}
 </fieldset>
 
