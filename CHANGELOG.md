@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.2.1](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.2.0...v3.2.1) (2026-03-04)
+
+
+### Bug Fixes
+
+* **settings:** add validation for plugin name in settings model ([db220dc](https://github.com/LindemannRock/craft-formie-sap-integration/commit/db220dcf5e9e3e27d2112eecc7cea0d5080324a8))
+
+
+### Miscellaneous Chores
+
+* add .gitattributes with export-ignore for Packagist distribution ([8d35fbb](https://github.com/LindemannRock/craft-formie-sap-integration/commit/8d35fbbeb3db26d06ada9f61117d25b1405108c9))
+* switch to Craft License for commercial release ([0521f15](https://github.com/LindemannRock/craft-formie-sap-integration/commit/0521f15d8e0286cc80709d9154dc84d649c074d8))
+
 ## [3.2.0](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.1.0...v3.2.0) (2026-01-11)
 
 
