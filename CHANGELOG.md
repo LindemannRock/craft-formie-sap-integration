@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.0](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.2.1...v3.3.0) (2026-04-02)
+
+
+### Features
+
+* **icon:** replace existing icon with new SVG design ([281e532](https://github.com/LindemannRock/craft-formie-sap-integration/commit/281e5328f51afd8032c6820ba1b6f313f493ae2e))
+
 ## [3.2.1](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.2.0...v3.2.1) (2026-03-04)
 
 
