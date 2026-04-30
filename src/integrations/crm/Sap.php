@@ -268,7 +268,7 @@ class Sap extends Crm
      */
     public function getDescription(): string
     {
-        return Craft::t('formie', 'Manage your SAP Cloud CRM integration.');
+        return Craft::t('formie-sap-integration', 'Manage your SAP Cloud CRM integration.');
     }
 
     /**
@@ -283,7 +283,7 @@ class Sap extends Crm
         // Credentials must be supplied via env-var or alias so the literal
         // value never lands in the integration's DB row in plaintext. Both
         // `$VAR` and `@alias` prefixes are acceptable.
-        $rules[] = [['clientId', 'clientSecret'], 'match', 'pattern' => '/^[\$@]/', 'message' => Craft::t('formie', '{attribute} must reference an environment variable ($VAR) or alias (@name) — literal values are not permitted.')];
+        $rules[] = [['clientId', 'clientSecret'], 'match', 'pattern' => '/^[\$@]/', 'message' => Craft::t('formie-sap-integration', '{attribute} must reference an environment variable ($VAR) or alias (@name) — literal values are not permitted.')];
 
         // Only validate URLs that are literal values — env-var ($VAR) and
         // alias (@name) references are resolved at runtime by App::parseEnv.
@@ -369,7 +369,7 @@ class Sap extends Crm
             if ($this->supportsOAuthConnection()) {
                 $token = $this->getToken();
                 if (!$token) {
-                    Integration::error($this, 'Unable to obtain access token.');
+                    Integration::error($this, Craft::t('formie-sap-integration', 'Unable to obtain access token.'));
                     return false;
                 }
             }
@@ -387,7 +387,9 @@ class Sap extends Crm
                 return true;
             }
 
-            Integration::error($this, 'Connection test failed with status code: ' . $statusCode);
+            Integration::error($this, Craft::t('formie-sap-integration', 'Connection test failed with status code: {code}', [
+                'code' => $statusCode,
+            ]));
             return false;
         } catch (\Throwable $e) {
             $exception = $e instanceof \Exception ? $e : new \Exception($e->getMessage(), (int)$e->getCode(), $e);
