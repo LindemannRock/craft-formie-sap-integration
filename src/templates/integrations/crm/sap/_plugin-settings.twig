@@ -10,25 +10,31 @@
 {% import '_includes/forms' as forms %}
 {% import 'verbb-base/_macros' as macros %}
 
-{% set displayName = integration.displayName() %}
-
 {% set instructions %}
-### Step 1. Configure SAP Integration
-1. Contact your SAP administrator to obtain OAuth credentials.
-1. You'll need:
-   - **Client ID** - Your OAuth application client ID
-   - **Client Secret** - Your OAuth application client secret
-   - **Environment** - Choose between staging or production
-   - **API Endpoint** - The specific endpoint for form submissions (e.g., `/customer-feedback`)
-
-### Step 2. Test Connection
-1. Save this integration.
-1. Click on the **Refresh** button in the right-hand sidebar.
+<h3>{{ 'Step 1. Configure SAP Integration' | t('formie-sap-integration') }}</h3>
+<ol>
+    <li>{{ 'Contact your SAP administrator to obtain OAuth credentials.' | t('formie-sap-integration') }}</li>
+    <li>{{ "You'll need:" | t('formie-sap-integration') }}
+        <ul>
+            <li><strong>{{ 'Client ID' | t('formie-sap-integration') }}</strong> — {{ 'Your OAuth application client ID' | t('formie-sap-integration') }}</li>
+            <li><strong>{{ 'Client Secret' | t('formie-sap-integration') }}</strong> — {{ 'Your OAuth application client secret' | t('formie-sap-integration') }}</li>
+            <li><strong>{{ 'Environment' | t('formie-sap-integration') }}</strong> — {{ 'Choose between staging or production' | t('formie-sap-integration') }}</li>
+            <li><strong>{{ 'API Endpoint' | t('formie-sap-integration') }}</strong> — {{ 'The specific endpoint for form submissions (e.g., {path})' | t('formie-sap-integration', { path: '<code>/customer-feedback</code>' }) | raw }}</li>
+        </ul>
+    </li>
+</ol>
+<h3>{{ 'Step 2. Test Connection' | t('formie-sap-integration') }}</h3>
+<ol>
+    <li>{{ 'Save this integration.' | t('formie-sap-integration') }}</li>
+    <li>{{ 'Click on the {refresh} button in the right-hand sidebar.' | t('formie-sap-integration', { refresh: '<strong>' ~ 'Refresh' | t('formie') ~ '</strong>' }) | raw }}</li>
+</ol>
 {% endset %}
 
-<div class="fui-settings-block">
-    {{ instructions | t('formie-sap-integration', { name: displayName }) | md }}
-</div>
+{% include 'lindemannrock-base/_components/info-box' with {
+    message: instructions,
+    type: 'info',
+    margin: 'bottom',
+} %}
 
 {% if not craft.app.config.general.allowAdminChanges %}
     <span class="warning with-icon">
@@ -38,7 +44,7 @@
 
 {{ forms.autosuggestField({
     label: 'Client ID' | t('formie-sap-integration'),
-    instructions: 'Enter your SAP OAuth Client ID.' | t('formie-sap-integration'),
+    instructions: 'Enter the SAP OAuth Client ID.' | t('formie-sap-integration'),
     name: 'clientId',
     required: true,
     suggestEnvVars: true,
@@ -50,7 +56,7 @@
 
 {{ forms.autosuggestField({
     label: 'Client Secret' | t('formie-sap-integration'),
-    instructions: 'Enter your SAP OAuth Client Secret.' | t('formie-sap-integration'),
+    instructions: 'Enter the SAP OAuth Client Secret.' | t('formie-sap-integration'),
     name: 'clientSecret',
     required: true,
     suggestEnvVars: true,
