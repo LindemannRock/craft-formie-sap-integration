@@ -37,6 +37,18 @@ return [
     'This is being overridden by the `pluginName` setting in the `config/formie-sap-integration.php` file.' => 'Dit wordt overschreven door de instelling `pluginName` in het bestand `config/formie-sap-integration.php`.',
     'This plugin provides the SAP Cloud CRM integration for Formie forms. Configure the integration settings within each form\'s Integrations tab.' => 'Deze plugin biedt de SAP Cloud CRM-integratie voor Formie-formulieren. Configureer de integratie-instellingen in het tabblad Integraties van elk formulier.',
 
+    // Integration: Setup guide
+    'Choose between staging or production' => 'Kies tussen staging en productie',
+    'Click on the {refresh} button in the right-hand sidebar.' => 'Klik op de knop {refresh} in de rechter zijbalk.',
+    'Contact your SAP administrator to obtain OAuth credentials.' => 'Neem contact op met uw SAP-beheerder om OAuth-inloggegevens te verkrijgen.',
+    'Save this integration.' => 'Sla deze integratie op.',
+    'Step 1. Configure SAP Integration' => 'Stap 1. SAP-integratie configureren',
+    'Step 2. Test Connection' => 'Stap 2. Verbinding testen',
+    'The specific endpoint for form submissions (e.g., {path})' => 'Het specifieke eindpunt voor formulierinzendingen (bijv. {path})',
+    'You\'ll need:' => 'U hebt het volgende nodig:',
+    'Your OAuth application client ID' => 'De client-ID van uw OAuth-applicatie',
+    'Your OAuth application client secret' => 'Het clientgeheim van uw OAuth-applicatie',
+
     // Integration: Plugin settings
     'API Endpoint' => 'API-eindpunt',
     'Client ID' => 'Client-ID',

@@ -37,6 +37,18 @@ return [
     'This is being overridden by the `pluginName` setting in the `config/formie-sap-integration.php` file.' => '`config/formie-sap-integration.php` ファイルの `pluginName` 設定によってオーバーライドされています。',
     'This plugin provides the SAP Cloud CRM integration for Formie forms. Configure the integration settings within each form\'s Integrations tab.' => 'このプラグインは Formie フォームに SAP Cloud CRM 統合を提供します。各フォームの Integrations タブで統合設定を行ってください。',
 
+    // Integration: Setup guide
+    'Choose between staging or production' => 'ステージングまたはプロダクションを選択してください',
+    'Click on the {refresh} button in the right-hand sidebar.' => '右側のサイドバーにある {refresh} ボタンをクリックしてください。',
+    'Contact your SAP administrator to obtain OAuth credentials.' => 'SAP の管理者に連絡して、OAuth の認証情報を取得してください。',
+    'Save this integration.' => 'このインテグレーションを保存してください。',
+    'Step 1. Configure SAP Integration' => 'ステップ 1. SAP インテグレーションを設定する',
+    'Step 2. Test Connection' => 'ステップ 2. 接続をテストする',
+    'The specific endpoint for form submissions (e.g., {path})' => 'フォーム送信用の特定のエンドポイント (例: {path})',
+    'You\'ll need:' => '以下が必要です:',
+    'Your OAuth application client ID' => 'OAuth アプリケーションのクライアント ID',
+    'Your OAuth application client secret' => 'OAuth アプリケーションのクライアントシークレット',
+
     // Integration: Plugin settings
     'API Endpoint' => 'API エンドポイント',
     'Client ID' => 'クライアント ID',
