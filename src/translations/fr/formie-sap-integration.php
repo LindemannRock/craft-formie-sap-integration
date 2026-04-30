@@ -10,6 +10,10 @@ return [
     // Plugin meta
     'Formie SAP Integration' => 'Formie SAP Integration',
     'Manage your SAP Cloud CRM integration.' => 'Gérez votre intégration SAP Cloud CRM.',
+    'Review SAP CRM integration guidance and manage plugin-level settings from one control panel workspace.' => 'Consultez les instructions d\'intégration SAP CRM et gérez les paramètres du plugin depuis un espace de travail unique dans le panneau de contrôle.',
+    'Open Formie SAP Integration' => 'Ouvrir Formie SAP Integration',
+    'Plugin Name' => 'Nom du plugin',
+    'The name of the plugin as it appears in the Control Panel menu' => 'Le nom du plugin tel qu\'il apparaît dans le menu du panneau de contrôle',
 
     // Permissions
     'Manage settings' => 'Gérer les paramètres',
@@ -17,25 +21,29 @@ return [
     // Common
     '- None -' => '- Aucun -',
 
+    // Controller messages
+    'Connection test failed with status code: {code}' => 'Le test de connexion a échoué avec le code de statut : {code}',
+    'Unable to obtain access token.' => 'Impossible d\'obtenir le jeton d\'accès.',
+
     // Validation messages
     '{attribute} must reference an environment variable ($VAR) or alias (@name) — literal values are not permitted.' => '{attribute} doit référencer une variable d\'environnement ($VAR) ou un alias (@name) — les valeurs littérales ne sont pas autorisées.',
-    'Unable to obtain access token.' => 'Impossible d\'obtenir le jeton d\'accès.',
-    'Connection test failed with status code: {code}' => 'Le test de connexion a échoué avec le code de statut : {code}',
 
     // Settings: General
+    'General Settings' => 'Paramètres généraux',
+    'This is being overridden by the `pluginName` setting in the `config/formie-sap-integration.php` file.' => 'Ce paramètre est remplacé par le paramètre `pluginName` dans le fichier `config/formie-sap-integration.php`.',
+
+    // Settings: Integration Information
+    'Forms → [Form Name] → Integrations → CRM → SAP Cloud' => 'Forms → [Form Name] → Integrations → CRM → SAP Cloud',
+    'Integration Information' => 'Informations sur l\'intégration',
+    'Integration Location' => 'Emplacement de l\'intégration',
+    'SAP Integration Status' => 'Statut de l\'intégration SAP',
+    'This plugin provides the SAP Cloud CRM integration for Formie forms. Configure the integration settings within each form\'s Integrations tab.' => 'Ce plugin fournit l\'intégration SAP Cloud CRM pour les formulaires Formie. Configurez les paramètres d\'intégration dans l\'onglet Intégrations de chaque formulaire.',
+
+    // Settings: Documentation
     'API testing and troubleshooting' => 'Tests API et résolution de problèmes',
     'Documentation' => 'Documentation',
     'Environment variable examples' => 'Exemples de variables d\'environnement',
     'For setup instructions and API testing, see:' => 'Pour les instructions de configuration et les tests API, voir :',
-    'Forms → [Form Name] → Integrations → CRM → SAP Cloud' => 'Forms → [Form Name] → Integrations → CRM → SAP Cloud',
-    'General Settings' => 'Paramètres généraux',
-    'Integration Information' => 'Informations sur l\'intégration',
-    'Integration Location' => 'Emplacement de l\'intégration',
-    'Plugin Name' => 'Nom du plugin',
-    'SAP Integration Status' => 'Statut de l\'intégration SAP',
-    'The name of the plugin as it appears in the Control Panel menu' => 'Le nom du plugin tel qu\'il apparaît dans le menu du panneau de contrôle',
-    'This is being overridden by the `pluginName` setting in the `config/formie-sap-integration.php` file.' => 'Ce paramètre est remplacé par le paramètre `pluginName` dans le fichier `config/formie-sap-integration.php`.',
-    'This plugin provides the SAP Cloud CRM integration for Formie forms. Configure the integration settings within each form\'s Integrations tab.' => 'Ce plugin fournit l\'intégration SAP Cloud CRM pour les formulaires Formie. Configurez les paramètres d\'intégration dans l\'onglet Intégrations de chaque formulaire.',
 
     // Integration: Setup guide
     'Choose between staging or production' => 'Choisissez entre staging et production',

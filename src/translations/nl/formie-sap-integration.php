@@ -10,6 +10,10 @@ return [
     // Plugin meta
     'Formie SAP Integration' => 'Formie SAP Integration',
     'Manage your SAP Cloud CRM integration.' => 'Beheer uw SAP Cloud CRM-integratie.',
+    'Review SAP CRM integration guidance and manage plugin-level settings from one control panel workspace.' => 'Bekijk de SAP CRM-integratierichtlijnen en beheer de plugin-instellingen vanuit één werkruimte in het configuratiescherm.',
+    'Open Formie SAP Integration' => 'Formie SAP Integration openen',
+    'Plugin Name' => 'Pluginnaam',
+    'The name of the plugin as it appears in the Control Panel menu' => 'De naam van de plugin zoals deze wordt weergegeven in het menu van het configuratiescherm',
 
     // Permissions
     'Manage settings' => 'Instellingen beheren',
@@ -17,25 +21,29 @@ return [
     // Common
     '- None -' => '- Geen -',
 
+    // Controller messages
+    'Connection test failed with status code: {code}' => 'Verbindingstest mislukt met statuscode: {code}',
+    'Unable to obtain access token.' => 'Kan toegangstoken niet ophalen.',
+
     // Validation messages
     '{attribute} must reference an environment variable ($VAR) or alias (@name) — literal values are not permitted.' => '{attribute} moet verwijzen naar een omgevingsvariabele ($VAR) of alias (@name) — letterlijke waarden zijn niet toegestaan.',
-    'Unable to obtain access token.' => 'Kan toegangstoken niet ophalen.',
-    'Connection test failed with status code: {code}' => 'Verbindingstest mislukt met statuscode: {code}',
 
     // Settings: General
+    'General Settings' => 'Algemene instellingen',
+    'This is being overridden by the `pluginName` setting in the `config/formie-sap-integration.php` file.' => 'Dit wordt overschreven door de instelling `pluginName` in het bestand `config/formie-sap-integration.php`.',
+
+    // Settings: Integration Information
+    'Forms → [Form Name] → Integrations → CRM → SAP Cloud' => 'Forms → [Form Name] → Integrations → CRM → SAP Cloud',
+    'Integration Information' => 'Integratie-informatie',
+    'Integration Location' => 'Integratielocatie',
+    'SAP Integration Status' => 'SAP-integratiestatus',
+    'This plugin provides the SAP Cloud CRM integration for Formie forms. Configure the integration settings within each form\'s Integrations tab.' => 'Deze plugin biedt de SAP Cloud CRM-integratie voor Formie-formulieren. Configureer de integratie-instellingen in het tabblad Integraties van elk formulier.',
+
+    // Settings: Documentation
     'API testing and troubleshooting' => 'API-testen en probleemoplossing',
     'Documentation' => 'Documentatie',
     'Environment variable examples' => 'Voorbeelden van omgevingsvariabelen',
     'For setup instructions and API testing, see:' => 'Zie voor installatie-instructies en API-testen:',
-    'Forms → [Form Name] → Integrations → CRM → SAP Cloud' => 'Forms → [Form Name] → Integrations → CRM → SAP Cloud',
-    'General Settings' => 'Algemene instellingen',
-    'Integration Information' => 'Integratie-informatie',
-    'Integration Location' => 'Integratielocatie',
-    'Plugin Name' => 'Pluginnaam',
-    'SAP Integration Status' => 'SAP-integratiestatus',
-    'The name of the plugin as it appears in the Control Panel menu' => 'De naam van de plugin zoals deze wordt weergegeven in het menu van het configuratiescherm',
-    'This is being overridden by the `pluginName` setting in the `config/formie-sap-integration.php` file.' => 'Dit wordt overschreven door de instelling `pluginName` in het bestand `config/formie-sap-integration.php`.',
-    'This plugin provides the SAP Cloud CRM integration for Formie forms. Configure the integration settings within each form\'s Integrations tab.' => 'Deze plugin biedt de SAP Cloud CRM-integratie voor Formie-formulieren. Configureer de integratie-instellingen in het tabblad Integraties van elk formulier.',
 
     // Integration: Setup guide
     'Choose between staging or production' => 'Kies tussen staging en productie',

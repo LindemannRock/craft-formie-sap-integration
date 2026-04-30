@@ -10,6 +10,10 @@ return [
     // Plugin meta
     'Formie SAP Integration' => 'Formie SAP Integration',
     'Manage your SAP Cloud CRM integration.' => 'SAP Cloud CRM の統合を管理します。',
+    'Review SAP CRM integration guidance and manage plugin-level settings from one control panel workspace.' => 'SAP CRM 統合のガイダンスを確認し、コントロールパネルの一つのワークスペースからプラグインレベルの設定を管理します。',
+    'Open Formie SAP Integration' => 'Formie SAP Integration を開く',
+    'Plugin Name' => 'プラグイン名',
+    'The name of the plugin as it appears in the Control Panel menu' => 'コントロールパネルのメニューに表示されるプラグインの名前',
 
     // Permissions
     'Manage settings' => '設定を管理する',
@@ -17,25 +21,29 @@ return [
     // Common
     '- None -' => '- なし -',
 
+    // Controller messages
+    'Connection test failed with status code: {code}' => '接続テストがステータスコード {code} で失敗しました。',
+    'Unable to obtain access token.' => 'アクセストークンを取得できませんでした。',
+
     // Validation messages
     '{attribute} must reference an environment variable ($VAR) or alias (@name) — literal values are not permitted.' => '{attribute} は環境変数 ($VAR) またはエイリアス (@name) を参照する必要があります — リテラル値は許可されていません。',
-    'Unable to obtain access token.' => 'アクセストークンを取得できませんでした。',
-    'Connection test failed with status code: {code}' => '接続テストがステータスコード {code} で失敗しました。',
 
     // Settings: General
+    'General Settings' => '一般設定',
+    'This is being overridden by the `pluginName` setting in the `config/formie-sap-integration.php` file.' => '`config/formie-sap-integration.php` ファイルの `pluginName` 設定によってオーバーライドされています。',
+
+    // Settings: Integration Information
+    'Forms → [Form Name] → Integrations → CRM → SAP Cloud' => 'Forms → [Form Name] → Integrations → CRM → SAP Cloud',
+    'Integration Information' => '統合情報',
+    'Integration Location' => '統合の場所',
+    'SAP Integration Status' => 'SAP 統合ステータス',
+    'This plugin provides the SAP Cloud CRM integration for Formie forms. Configure the integration settings within each form\'s Integrations tab.' => 'このプラグインは Formie フォームに SAP Cloud CRM 統合を提供します。各フォームの Integrations タブで統合設定を行ってください。',
+
+    // Settings: Documentation
     'API testing and troubleshooting' => 'API テストとトラブルシューティング',
     'Documentation' => 'ドキュメント',
     'Environment variable examples' => '環境変数の例',
     'For setup instructions and API testing, see:' => 'セットアップ手順と API テストについては、こちらを参照してください:',
-    'Forms → [Form Name] → Integrations → CRM → SAP Cloud' => 'Forms → [Form Name] → Integrations → CRM → SAP Cloud',
-    'General Settings' => '一般設定',
-    'Integration Information' => '統合情報',
-    'Integration Location' => '統合の場所',
-    'Plugin Name' => 'プラグイン名',
-    'SAP Integration Status' => 'SAP 統合ステータス',
-    'The name of the plugin as it appears in the Control Panel menu' => 'コントロールパネルのメニューに表示されるプラグインの名前',
-    'This is being overridden by the `pluginName` setting in the `config/formie-sap-integration.php` file.' => '`config/formie-sap-integration.php` ファイルの `pluginName` 設定によってオーバーライドされています。',
-    'This plugin provides the SAP Cloud CRM integration for Formie forms. Configure the integration settings within each form\'s Integrations tab.' => 'このプラグインは Formie フォームに SAP Cloud CRM 統合を提供します。各フォームの Integrations タブで統合設定を行ってください。',
 
     // Integration: Setup guide
     'Choose between staging or production' => 'ステージングまたはプロダクションを選択してください',
