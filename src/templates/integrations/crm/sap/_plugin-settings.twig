@@ -27,7 +27,7 @@
 {% endset %}
 
 <div class="fui-settings-block">
-    {{ instructions | t('formie', { name: displayName }) | md }}
+    {{ instructions | t('formie-sap-integration', { name: displayName }) | md }}
 </div>
 
 {% if not craft.app.config.general.allowAdminChanges %}
@@ -37,8 +37,8 @@
 {% endif %}
 
 {{ forms.autosuggestField({
-    label: 'Client ID' | t('formie'),
-    instructions: 'Enter your SAP OAuth Client ID.' | t('formie'),
+    label: 'Client ID' | t('formie-sap-integration'),
+    instructions: 'Enter your SAP OAuth Client ID.' | t('formie-sap-integration'),
     name: 'clientId',
     required: true,
     suggestEnvVars: true,
@@ -49,8 +49,8 @@
 }) }}
 
 {{ forms.autosuggestField({
-    label: 'Client Secret' | t('formie'),
-    instructions: 'Enter your SAP OAuth Client Secret.' | t('formie'),
+    label: 'Client Secret' | t('formie-sap-integration'),
+    instructions: 'Enter your SAP OAuth Client Secret.' | t('formie-sap-integration'),
     name: 'clientSecret',
     required: true,
     suggestEnvVars: true,
@@ -61,8 +61,8 @@
 }) }}
 
 {{ forms.autosuggestField({
-    label: 'Environment' | t('formie'),
-    instructions: 'Enter the SAP environment to connect to (staging or production).' | t('formie'),
+    label: 'Environment' | t('formie-sap-integration'),
+    instructions: 'Enter the SAP environment to connect to (staging or production).' | t('formie-sap-integration'),
     name: 'environment',
     suggestEnvVars: true,
     suggestAliases: true,
@@ -73,8 +73,8 @@
 }) }}
 
 {{ forms.autosuggestField({
-    label: 'Staging API URL' | t('formie'),
-    instructions: 'Enter the base URL for the staging API (e.g., https://staging-api.sap.com/v1).' | t('formie'),
+    label: 'Staging API URL' | t('formie-sap-integration'),
+    instructions: 'Enter the base URL for the staging API (e.g., https://staging-api.sap.com/v1).' | t('formie-sap-integration'),
     name: 'stagingUrl',
     suggestEnvVars: true,
     suggestAliases: true,
@@ -85,8 +85,8 @@
 }) }}
 
 {{ forms.autosuggestField({
-    label: 'Production API URL' | t('formie'),
-    instructions: 'Enter the base URL for the production API (e.g., https://production-api.sap.com/v1).' | t('formie'),
+    label: 'Production API URL' | t('formie-sap-integration'),
+    instructions: 'Enter the base URL for the production API (e.g., https://production-api.sap.com/v1).' | t('formie-sap-integration'),
     name: 'productionUrl',
     suggestEnvVars: true,
     suggestAliases: true,
@@ -97,8 +97,8 @@
 }) }}
 
 {{ forms.autosuggestField({
-    label: 'API Endpoint' | t('formie'),
-    instructions: 'Enter the SAP API endpoint path (e.g., /customer-feedback).' | t('formie'),
+    label: 'API Endpoint' | t('formie-sap-integration'),
+    instructions: 'Enter the SAP API endpoint path (e.g., /customer-feedback).' | t('formie-sap-integration'),
     name: 'apiEndpoint',
     suggestEnvVars: true,
     suggestAliases: true,
@@ -108,8 +108,8 @@
 }) }}
 
 {{ forms.autosuggestField({
-    label: 'OAuth Scope' | t('formie'),
-    instructions: 'Enter the OAuth scopes required, comma-separated.' | t('formie'),
+    label: 'OAuth Scope' | t('formie-sap-integration'),
+    instructions: 'Enter the OAuth scopes required, comma-separated.' | t('formie-sap-integration'),
     name: 'oauthScope',
     suggestEnvVars: true,
     suggestAliases: true,
@@ -119,8 +119,8 @@
 }) }}
 
 {{ forms.autosuggestField({
-    label: 'OAuth Authorization URL' | t('formie'),
-    instructions: 'Enter the SAP OAuth authorization URL (e.g., https://api.sap.com/oauth/authorize).' | t('formie'),
+    label: 'OAuth Authorization URL' | t('formie-sap-integration'),
+    instructions: 'Enter the SAP OAuth authorization URL (e.g., https://api.sap.com/oauth/authorize).' | t('formie-sap-integration'),
     name: 'oauthAuthorizeUrl',
     suggestEnvVars: true,
     suggestAliases: true,
@@ -131,8 +131,8 @@
 }) }}
 
 {{ forms.autosuggestField({
-    label: 'OAuth Token URL' | t('formie'),
-    instructions: 'Enter the SAP OAuth token URL (e.g., https://api.sap.com/oauth/token).' | t('formie'),
+    label: 'OAuth Token URL' | t('formie-sap-integration'),
+    instructions: 'Enter the SAP OAuth token URL (e.g., https://api.sap.com/oauth/token).' | t('formie-sap-integration'),
     name: 'oauthTokenUrl',
     suggestEnvVars: true,
     suggestAliases: true,
@@ -143,8 +143,8 @@
 }) }}
 
 {{ forms.autosuggestField({
-    label: 'OAuth Redirect URI' | t('formie'),
-    instructions: 'Enter a custom OAuth redirect URI if needed. Leave empty to use Craft\'s default.' | t('formie'),
+    label: 'OAuth Redirect URI' | t('formie-sap-integration'),
+    instructions: 'Enter a custom OAuth redirect URI if needed. Leave empty to use Craft\'s default.' | t('formie-sap-integration'),
     name: 'redirectUri',
     suggestEnvVars: true,
     suggestAliases: true,
