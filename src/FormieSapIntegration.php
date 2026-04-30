@@ -60,7 +60,16 @@ class FormieSapIntegration extends Plugin
         self::$plugin = $this;
 
         // Bootstrap the base plugin helper
-        PluginHelper::bootstrap($this, 'formieSapIntegrationHelper');
+        PluginHelper::bootstrap($this, 'formieSapIntegrationHelper', [], [], [
+            'installExperience' => [
+                'headline' => Craft::t('formie-sap-integration', 'Formie SAP Integration'),
+                'body' => Craft::t('formie-sap-integration', 'Review SAP CRM integration guidance and manage plugin-level settings from one control panel workspace.'),
+                'ctaLabel' => Craft::t('formie-sap-integration', 'Open Formie SAP Integration'),
+                'ctaUrl' => 'settings/plugins/formie-sap-integration',
+                'redirectUri' => 'settings/plugins/formie-sap-integration',
+                'confettiPreset' => 'surprise',
+            ],
+        ]);
 
         // Set the alias for this plugin
         Craft::setAlias('@lindemannrock/formiesapintegration', __DIR__);
