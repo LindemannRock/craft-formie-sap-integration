@@ -14,6 +14,8 @@ use Craft;
 use craft\base\Model;
 use craft\base\Plugin;
 use craft\events\RegisterTemplateRootsEvent;
+use craft\events\RegisterUserPermissionsEvent;
+use craft\services\UserPermissions;
 use craft\web\View;
 use lindemannrock\base\helpers\PluginHelper;
 use lindemannrock\formiesapintegration\integrations\crm\Sap;
@@ -63,13 +65,7 @@ class FormieSapIntegration extends Plugin
         // Set the alias for this plugin
         Craft::setAlias('@lindemannrock/formiesapintegration', __DIR__);
         Craft::setAlias('@formie-sap-integration', __DIR__);
-        
-        // Create class alias for backward compatibility with existing integrations
-        class_alias(
-            \lindemannrock\formiesapintegration\integrations\crm\Sap::class,
-            'lindemannrock\modules\formiesapintegration\integrations\crm\Sap'
-        );
-        
+
         // Register template roots
         Event::on(
             View::class,
@@ -87,17 +83,30 @@ class FormieSapIntegration extends Plugin
                 $event->crm[] = Sap::class;
             }
         );
-        
+
+        // Register permissions. SAP credentials themselves live in Formie's
+        // integration UI and are gated by Formie's own permission system —
+        // this permission scopes access to this plugin's own settings page.
+        Event::on(
+            UserPermissions::class,
+            UserPermissions::EVENT_REGISTER_PERMISSIONS,
+            function(RegisterUserPermissionsEvent $event) {
+                $event->permissions[] = [
+                    'heading' => $this->getSettings()->getFullName(),
+                    'permissions' => [
+                        'formieSapIntegration:manageSettings' => [
+                            'label' => Craft::t('formie-sap-integration', 'Manage settings'),
+                        ],
+                    ],
+                ];
+            }
+        );
+
         // Set the plugin name from settings
         $settings = $this->getSettings();
         if (!empty($settings->pluginName)) {
             $this->name = $settings->pluginName;
         }
-
-        Craft::info(
-            'Formie SAP Integration plugin loaded',
-            __METHOD__
-        );
     }
     
     /**

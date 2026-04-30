@@ -1,26 +1,19 @@
 <?php
 /**
- * SAP Integration for Formie - Craft CMS 5.x
- *
- * SAP CRM integration class for Formie
- *
- * @link      https://lindemannrock.com
- * @copyright Copyright (c) 2025 LindemannRock
- */
-
-/**
  * Formie SAP Integration plugin for Craft CMS 5.x
  *
+ * SAP CRM integration class for Formie.
+ *
  * @link      https://lindemannrock.com
- * @copyright Copyright (c) 2025 LindemannRock
+ * @copyright Copyright (c) 2026 LindemannRock
  */
 
 namespace lindemannrock\formiesapintegration\integrations\crm;
 
 use Craft;
-use craft\helpers\App;
 use craft\helpers\Json;
 use DateTime;
+use lindemannrock\formiesapintegration\helpers\Url as UrlHelper;
 
 use verbb\formie\base\Crm;
 use verbb\formie\base\Integration;
@@ -61,12 +54,10 @@ class Sap extends Crm
      */
     public function getAuthorizeUrl(): string
     {
-        $url = App::env($this->oauthAuthorizeUrl);
-        if ($url) {
-            return $url;
-        }
-        
-        return 'https://api.sap.com/oauth/authorize';
+        // TODO: OAuth flow not yet tested end-to-end with a real SAP account.
+        // When OAuth is enabled (supportsOAuthConnection -> true), validate
+        // the resolved URL via UrlHelper::validateOutboundUrl(). See .internal/todo.md.
+        return UrlHelper::parseEnv($this->oauthAuthorizeUrl) ?? 'https://api.sap.com/oauth/authorize';
     }
 
     /**
@@ -74,12 +65,8 @@ class Sap extends Crm
      */
     public function getAccessTokenUrl(): string
     {
-        $url = App::env($this->oauthTokenUrl);
-        if ($url) {
-            return $url;
-        }
-        
-        return 'https://api.sap.com/oauth/token';
+        // TODO: see getAuthorizeUrl() — same end-to-end SAP testing TODO applies.
+        return UrlHelper::parseEnv($this->oauthTokenUrl) ?? 'https://api.sap.com/oauth/token';
     }
 
     /**
@@ -87,7 +74,9 @@ class Sap extends Crm
      */
     public function getRedirectUri(): string
     {
-        return App::env($this->redirectUri) ?: parent::getRedirectUri();
+        // TODO: see getAuthorizeUrl() — also validate against expected
+        // origin host before OAuth is enabled (open-redirect defense).
+        return UrlHelper::parseEnv($this->redirectUri) ?? parent::getRedirectUri();
     }
 
     /**
@@ -95,7 +84,7 @@ class Sap extends Crm
      */
     public function getClientId(): string
     {
-        return App::env($this->clientId) ?: '';
+        return UrlHelper::parseEnv($this->clientId) ?? '';
     }
 
     /**
@@ -103,7 +92,7 @@ class Sap extends Crm
      */
     public function getClientSecret(): string
     {
-        return App::env($this->clientSecret) ?: '';
+        return UrlHelper::parseEnv($this->clientSecret) ?? '';
     }
 
     /**
@@ -290,7 +279,12 @@ class Sap extends Crm
         $rules = parent::defineRules();
 
         $rules[] = [['clientId', 'clientSecret'], 'required'];
-        
+
+        // Credentials must be supplied via env-var or alias so the literal
+        // value never lands in the integration's DB row in plaintext. Both
+        // `$VAR` and `@alias` prefixes are acceptable.
+        $rules[] = [['clientId', 'clientSecret'], 'match', 'pattern' => '/^[\$@]/', 'message' => Craft::t('formie', '{attribute} must reference an environment variable ($VAR) or alias (@name) — literal values are not permitted.')];
+
         // Only validate URLs if they're not environment variables
         $rules[] = [['stagingUrl', 'productionUrl'], 'url', 'when' => function($model, $attribute) {
             $value = $model->$attribute;
@@ -334,27 +328,17 @@ class Sap extends Crm
     {
         try {
             $payload = $this->generatePayload($submission);
-            
-            // Log the payload for debugging
-            Craft::info('SAP Integration Payload: ' . Json::encode($payload), __METHOD__);
-            
-            // Get the API endpoint
-            $endpoint = '/' . ltrim($this->apiEndpoint, '/');
+
+            $endpoint = UrlHelper::validateApiPath((string)$this->apiEndpoint);
             $url = $this->getApiBaseUrl() . $endpoint;
-            
-            Craft::info('SAP Integration URL: ' . $url, __METHOD__);
-            
-            // Send the request directly using Guzzle
+
             $client = $this->getClient();
-            $response = $client->request('POST', $url, [
+            $response = $client->request('POST', $url, $this->buildRequestOptions([
                 'json' => $payload,
-                'http_errors' => false,
-            ]);
-            
+            ]));
+
             $statusCode = $response->getStatusCode();
             $responseBody = $response->getBody()->getContents();
-            
-            Craft::info('SAP Integration Response: ' . $statusCode . ' - ' . $responseBody, __METHOD__);
             
             // For webhook.site, any 2xx response is success
             if ($statusCode >= 200 && $statusCode < 300) {
@@ -391,26 +375,17 @@ class Sap extends Crm
             
             // Test the connection with a simple API call
             $client = $this->getClient();
-            
+
             // Use the full URL, not just the path
             $testUrl = $this->getApiBaseUrl() . '/system/info';
+
+            $response = $client->request('GET', $testUrl, $this->buildRequestOptions());
             
-            $response = $client->request('GET', $testUrl, [
-                'http_errors' => false, // Don't throw on 4xx/5xx
-            ]);
-            
-            // Check if we got a successful response
             $statusCode = $response->getStatusCode();
             if ($statusCode >= 200 && $statusCode < 300) {
                 return true;
             }
-            
-            // For webhook.site testing, also accept 404 as "connected"
-            // since webhook.site doesn't have a /system/info endpoint
-            if ($statusCode === 404) {
-                return true;
-            }
-            
+
             Integration::error($this, 'Connection test failed with status code: ' . $statusCode);
             return false;
         } catch (\Throwable $e) {
@@ -430,15 +405,42 @@ class Sap extends Crm
             return $this->_client;
         }
 
-        $headers = $this->getRequestHeaders();
-        $headers['Content-Type'] = 'application/json';
-        $headers['Accept'] = 'application/json';
-
+        // Auth header is intentionally NOT baked into the cached client —
+        // it is resolved per-request via buildRequestOptions() so credential
+        // changes (or future OAuth token refresh) take effect immediately
+        // even within a long-running PHP process.
         return $this->_client = Craft::createGuzzleClient([
-            'headers' => $headers,
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+            ],
             'timeout' => 30,
             'connect_timeout' => 10,
+            // Explicit TLS verification — defends against site-level Guzzle
+            // config overriding the default to `false` for dev environments.
+            'verify' => true,
         ]);
+    }
+
+    /**
+     * Build per-request Guzzle options including a freshly resolved
+     * Authorization header. Used for every outbound SAP request.
+     */
+    private function buildRequestOptions(array $extra = []): array
+    {
+        $options = [
+            'http_errors' => false,
+            'headers' => $this->getRequestHeaders(),
+        ];
+
+        // Per-call additions (e.g. JSON body) — caller-supplied headers
+        // are merged so they can override the auth header if needed.
+        if (isset($extra['headers'])) {
+            $options['headers'] = array_merge($options['headers'], $extra['headers']);
+            unset($extra['headers']);
+        }
+
+        return array_merge($options, $extra);
     }
 
     // Private Methods
@@ -450,28 +452,34 @@ class Sap extends Crm
     protected ?\GuzzleHttp\Client $_client = null;
 
     /**
-     * Get the API base URL based on environment
+     * Resolve and validate the API base URL for the current environment.
+     *
+     * @throws \RuntimeException if the resolved URL is not a safe outbound
+     *         target (non-https, embedded credentials, blocked host, or
+     *         outside the configured allowlist).
      */
     private function getApiBaseUrl(): string
     {
-        $env = App::env($this->environment) ?: 'staging';
-        
+        $env = UrlHelper::parseEnv($this->environment) ?? 'staging';
+
         if ($env === 'production') {
-            $url = App::env($this->productionUrl);
-            if ($url) {
-                return rtrim($url, '/');
-            }
+            $url = UrlHelper::parseEnv($this->productionUrl) ?? 'https://production-api.sap.com/v1';
+        } else {
+            $url = UrlHelper::parseEnv($this->stagingUrl) ?? 'https://staging-api.sap.com/v1';
         }
-        
-        $url = App::env($this->stagingUrl);
-        if ($url) {
-            return rtrim($url, '/');
-        }
-        
-        // Default URLs if not configured
-        return $env === 'production' ?
-            'https://production-api.sap.com/v1' :
-            'https://staging-api.sap.com/v1';
+
+        return UrlHelper::validateOutboundUrl($url, $this->getAllowedHosts());
+    }
+
+    /**
+     * Optional host allowlist from `config/formie-sap-integration.php`.
+     */
+    private function getAllowedHosts(): array
+    {
+        $config = Craft::$app->getConfig()->getConfigFromFile('formie-sap-integration');
+        $hosts = $config['allowedHosts'] ?? [];
+
+        return is_array($hosts) ? $hosts : [];
     }
 
     /**
@@ -488,11 +496,11 @@ class Sap extends Crm
                 $headers['Authorization'] = 'Bearer ' . $token->accessToken;
             }
         } else {
-            // Basic auth fallback
-            $clientId = App::env($this->clientId);
-            $clientSecret = App::env($this->clientSecret);
-            
-            if ($clientId && $clientSecret) {
+            // Basic auth (current default — OAuth is gated off pending end-to-end SAP testing)
+            $clientId = UrlHelper::parseEnv($this->clientId);
+            $clientSecret = UrlHelper::parseEnv($this->clientSecret);
+
+            if ($clientId !== null && $clientSecret !== null) {
                 $headers['Authorization'] = 'Basic ' . base64_encode($clientId . ':' . $clientSecret);
             }
         }
@@ -609,8 +617,10 @@ class Sap extends Crm
                 return $value['value'];
             }
             
-            // Handle other arrays
-            return json_encode($value);
+            // Handle other arrays — Json::encode throws on encode failure
+            // (circular refs, invalid UTF-8) so callers don't silently
+            // receive `false` in the SAP payload.
+            return Json::encode($value);
         }
         
         if ($value instanceof DateTime) {
@@ -621,20 +631,27 @@ class Sap extends Crm
     }
 
     /**
-     * Make API request to SAP
+     * Make a generic API request to SAP. Returns the decoded JSON body
+     * for 2xx responses, or null for non-2xx (caller should check).
      */
     public function request(string $method, string $endpoint, array $data = []): mixed
     {
         $client = $this->getClient();
-        
-        $options = [];
+
+        $extra = [];
         if (!empty($data)) {
-            $options['json'] = $data;
+            $extra['json'] = $data;
         }
-        
-        $response = $client->request($method, $endpoint, $options);
-        
-        return Json::decode($response->getBody(), true);
+
+        $url = $this->getApiBaseUrl() . UrlHelper::validateApiPath($endpoint);
+        $response = $client->request($method, $url, $this->buildRequestOptions($extra));
+
+        $statusCode = $response->getStatusCode();
+        if ($statusCode < 200 || $statusCode >= 300) {
+            return null;
+        }
+
+        return Json::decode((string)$response->getBody(), true);
     }
 
     /**
