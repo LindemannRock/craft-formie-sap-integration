@@ -144,7 +144,28 @@ class Url
 
     private static function isBlockedHost(string $host): bool
     {
+        // Strip IPv6 brackets and zone-id. parse_url returns IPv6 hosts as
+        // `[::1]` or `[::1%25eth0]` (URL-encoded `%`); curl/the OS will
+        // happily resolve a bare `::1` from either form, so we must
+        // normalise before comparing against the blocklist.
+        if (str_starts_with($host, '[') && str_ends_with($host, ']')) {
+            $host = substr($host, 1, -1);
+        }
+        $zonePos = strpos($host, '%');
+        if ($zonePos !== false) {
+            $host = substr($host, 0, $zonePos);
+        }
+
         if (in_array($host, self::BLOCKED_HOSTS, true)) {
+            return true;
+        }
+
+        // Reject non-standard IPv4 forms that filter_var ignores but the
+        // resolver accepts: decimal (`2130706433`), hex (`0x7f000001`),
+        // octal (`0177.0.0.1`), and short forms (`127.1`). These can all
+        // round-trip to loopback / private ranges and bypass the dotted
+        // -decimal check below.
+        if (self::looksLikeAlternateFormIpv4($host)) {
             return true;
         }
 
@@ -168,6 +189,72 @@ class Url
         }
 
         return false;
+    }
+
+    /**
+     * True if the host looks like an alternate-form IPv4 literal that the
+     * OS resolver will accept but `FILTER_VALIDATE_IP` will not. Real SAP
+     * API hostnames are FQDNs, never numeric — but hex-letter labels alone
+     * (e.g. `bead.ca`, `ace.ca`) are NOT alternate-form IPv4: `inet_aton`
+     * only treats labels as hex when they carry an explicit `0x` prefix.
+     *
+     * The detector therefore requires an explicit alternate-form marker
+     * (pure-numeric whole, `0x` hex prefix, octal leading zero, or short
+     * dotted form with all-numeric labels).
+     */
+    private static function looksLikeAlternateFormIpv4(string $host): bool
+    {
+        // Pure decimal integer (e.g. 2130706433 = 127.0.0.1)
+        if (preg_match('/^\d+$/', $host)) {
+            return true;
+        }
+
+        // Pure hex form (0x7f000001)
+        if (preg_match('/^0x[0-9a-f]+$/i', $host)) {
+            return true;
+        }
+
+        if (!str_contains($host, '.')) {
+            return false;
+        }
+
+        // Dotted form: every label must be either pure-decimal/octal or
+        // `0x`-prefixed hex. If any label has letters without a `0x`
+        // prefix, it is a real domain and not an alternate IPv4 form.
+        $labels = explode('.', $host);
+        $hasAlternateMarker = false;
+
+        foreach ($labels as $label) {
+            if ($label === '') {
+                // empty label = trailing dot or "..", not an IPv4 alternate form
+                return false;
+            }
+
+            if (preg_match('/^\d+$/', $label)) {
+                // Octal: leading zero with additional digits (`0177`)
+                if (strlen($label) > 1 && $label[0] === '0') {
+                    $hasAlternateMarker = true;
+                }
+                continue;
+            }
+
+            if (preg_match('/^0x[0-9a-f]+$/i', $label)) {
+                $hasAlternateMarker = true;
+                continue;
+            }
+
+            // Real domain label
+            return false;
+        }
+
+        if ($hasAlternateMarker) {
+            return true;
+        }
+
+        // Every label was plain decimal but the whole did not parse as a
+        // dotted-quad — short form like `127.1`. `inet_aton` resolves these
+        // to loopback / private ranges.
+        return count($labels) < 4 && !filter_var($host, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
     }
 
     private static function hostMatchesAllowlist(string $host, array $allowed): bool

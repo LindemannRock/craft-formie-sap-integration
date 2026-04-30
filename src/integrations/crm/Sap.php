@@ -285,11 +285,14 @@ class Sap extends Crm
         // `$VAR` and `@alias` prefixes are acceptable.
         $rules[] = [['clientId', 'clientSecret'], 'match', 'pattern' => '/^[\$@]/', 'message' => Craft::t('formie', '{attribute} must reference an environment variable ($VAR) or alias (@name) — literal values are not permitted.')];
 
-        // Only validate URLs if they're not environment variables
+        // Only validate URLs that are literal values — env-var ($VAR) and
+        // alias (@name) references are resolved at runtime by App::parseEnv.
         $rules[] = [['stagingUrl', 'productionUrl'], 'url', 'when' => function($model, $attribute) {
             $value = $model->$attribute;
-            // Skip validation if it's an environment variable (starts with $)
-            return !empty($value) && !str_starts_with($value, '$');
+            if (empty($value)) {
+                return false;
+            }
+            return !str_starts_with($value, '$') && !str_starts_with($value, '@');
         }];
 
         return $rules;
@@ -338,13 +341,11 @@ class Sap extends Crm
             ]));
 
             $statusCode = $response->getStatusCode();
-            $responseBody = $response->getBody()->getContents();
-            
-            // For webhook.site, any 2xx response is success
+
             if ($statusCode >= 200 && $statusCode < 300) {
                 return true;
             }
-            
+
             Integration::error($this, Craft::t('formie', 'API returned status code: {code}', [
                 'code' => $statusCode,
             ]));
