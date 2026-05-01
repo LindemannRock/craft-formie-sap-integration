@@ -22,7 +22,7 @@ use RuntimeException;
  *   - validating path-only API endpoint values to prevent path/CRLF
  *     injection when concatenated onto a base URL
  *
- * @since 1.0.0
+ * @since 3.4.0
  */
 class Url
 {
