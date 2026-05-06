@@ -1,5 +1,27 @@
 # Changelog
 
+## [3.4.0](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.3.0...v3.4.0) (2026-05-06)
+
+
+### Features
+
+* add issue templates for bug reports, feature requests, and questions ([3a030fe](https://github.com/LindemannRock/craft-formie-sap-integration/commit/3a030fe9e8908caa93c2571cddde1545ffb511f5))
+* **cp:** add installation experience guidance for SAP integration ([bd6d6e7](https://github.com/LindemannRock/craft-formie-sap-integration/commit/bd6d6e7d4fd54cdd6ef881a44021e5ebb1557632))
+* **crm:** enhance SAP integration configuration instructions ([923b733](https://github.com/LindemannRock/craft-formie-sap-integration/commit/923b7339caa94e4c5fdeb11d69ebc2efc25833af))
+* **crm:** enhance URL validation for SAP integration ([822eb02](https://github.com/LindemannRock/craft-formie-sap-integration/commit/822eb02c52ba23c579eaba28168829bfc1f68a50))
+* **crm:** implement SAP integration settings and URL validation ([0b7a123](https://github.com/LindemannRock/craft-formie-sap-integration/commit/0b7a1233dd538df1acb3e1338a748f78be2f7079))
+* **translations:** add Italian, Japanese, Dutch, Norwegian, Portuguese, and Swedish translations for SAP integration ([87d8db6](https://github.com/LindemannRock/craft-formie-sap-integration/commit/87d8db6d40ca5d72f461f07755f5f3be39bf3415))
+* **translations:** add new strings for SAP integration guidance and settings management ([8b5bda8](https://github.com/LindemannRock/craft-formie-sap-integration/commit/8b5bda8123849a0b236b0cb48081807da7f75a2a))
+* **translations:** add setup guide translations for multiple languages ([50e2f92](https://github.com/LindemannRock/craft-formie-sap-integration/commit/50e2f926330c4ed41517eecc5d7b1f07ec175a27))
+
+
+### Bug Fixes
+
+* **crm:** update translation keys for SAP integration messages ([9d46442](https://github.com/LindemannRock/craft-formie-sap-integration/commit/9d46442ca46da6529f49e7820a035d2764a10258))
+* **crm:** update translation keys for SAP integration settings and fields ([781b1ce](https://github.com/LindemannRock/craft-formie-sap-integration/commit/781b1ce369d758d39870745edb81834622344b05))
+* drop PAT requirement for release-please — use built-in GITHUB_TOKEN ([dd7322e](https://github.com/LindemannRock/craft-formie-sap-integration/commit/dd7322e6ca25996e7e0c81446aee162c0ffb81bc))
+* **Url:** correct version number in class documentation ([32f82a1](https://github.com/LindemannRock/craft-formie-sap-integration/commit/32f82a1355f85f2389e74b96b4e001ade1a190c5))
+
 ## [3.3.0](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.2.1...v3.3.0) (2026-04-02)
 
 
