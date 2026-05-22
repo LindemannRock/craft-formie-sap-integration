@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.5.0](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.4.0...v3.5.0) (2026-05-22)
+
+
+### Added
+
+* **ci:** add pre-commit hook for ECS and PHPStan checks ([d6e4bfd](https://github.com/LindemannRock/craft-formie-sap-integration/commit/d6e4bfd844d1935f0e2dbad42109617d64f46bdf))
+* **i18n:** add translation issue template for reporting language problems ([93ecfcd](https://github.com/LindemannRock/craft-formie-sap-integration/commit/93ecfcd10df841a36b602d3be79b079bd6af9179))
+* **tests:** add integration tests for URL validation and parsing ([1bc9c9d](https://github.com/LindemannRock/craft-formie-sap-integration/commit/1bc9c9d46d71d90b3c4a9396abf20d7f80321701))
+
 ## [3.4.0](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.3.0...v3.4.0) (2026-05-06)
 
 
