@@ -12,8 +12,6 @@ return [
     'Manage your SAP Cloud CRM integration.' => 'Gérez votre intégration SAP Cloud CRM.',
     'Review SAP CRM integration guidance and manage plugin-level settings from one control panel workspace.' => 'Consultez les instructions d\'intégration SAP CRM et gérez les paramètres du plugin depuis un espace de travail unique dans le panneau de contrôle.',
     'Open Formie SAP Integration' => 'Ouvrir Formie SAP Integration',
-    'Plugin Name' => 'Nom du plugin',
-    'The name of the plugin as it appears in the Control Panel menu' => 'Le nom du plugin tel qu\'il apparaît dans le menu du panneau de contrôle',
 
     // Permissions
     'Manage settings' => 'Gérer les paramètres',

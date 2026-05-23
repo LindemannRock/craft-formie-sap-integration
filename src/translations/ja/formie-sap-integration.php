@@ -12,8 +12,6 @@ return [
     'Manage your SAP Cloud CRM integration.' => 'SAP Cloud CRM の統合を管理します。',
     'Review SAP CRM integration guidance and manage plugin-level settings from one control panel workspace.' => 'SAP CRM 統合のガイダンスを確認し、コントロールパネルの一つのワークスペースからプラグインレベルの設定を管理します。',
     'Open Formie SAP Integration' => 'Formie SAP Integration を開く',
-    'Plugin Name' => 'プラグイン名',
-    'The name of the plugin as it appears in the Control Panel menu' => 'コントロールパネルのメニューに表示されるプラグインの名前',
 
     // Permissions
     'Manage settings' => '設定を管理する',
