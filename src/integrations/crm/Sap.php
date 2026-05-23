@@ -56,7 +56,7 @@ class Sap extends Crm
     {
         // TODO: OAuth flow not yet tested end-to-end with a real SAP account.
         // When OAuth is enabled (supportsOAuthConnection -> true), validate
-        // the resolved URL via UrlHelper::validateOutboundUrl(). See .internal/todo.md.
+        // the resolved URL via UrlHelper::validateOutboundUrl().
         return UrlHelper::parseEnv($this->oauthAuthorizeUrl) ?? 'https://api.sap.com/oauth/authorize';
     }
 
