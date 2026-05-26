@@ -28,7 +28,6 @@ return [
 
     // Settings: General
     'General Settings' => 'الإعدادات العامة',
-    'This is being overridden by the `pluginName` setting in the `config/formie-sap-integration.php` file.' => 'يتم تجاوز هذا الإعداد بواسطة الإعداد `pluginName` في ملف `config/formie-sap-integration.php`.',
 
     // Settings: Integration Information
     'Forms → [Form Name] → Integrations → CRM → SAP Cloud' => 'Forms → [Form Name] → Integrations → CRM → SAP Cloud',

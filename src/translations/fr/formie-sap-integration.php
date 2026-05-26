@@ -28,7 +28,6 @@ return [
 
     // Settings: General
     'General Settings' => 'Paramètres généraux',
-    'This is being overridden by the `pluginName` setting in the `config/formie-sap-integration.php` file.' => 'Ce paramètre est remplacé par le paramètre `pluginName` dans le fichier `config/formie-sap-integration.php`.',
 
     // Settings: Integration Information
     'Forms → [Form Name] → Integrations → CRM → SAP Cloud' => 'Forms → [Form Name] → Integrations → CRM → SAP Cloud',
