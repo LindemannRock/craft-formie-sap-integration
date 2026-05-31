@@ -387,7 +387,7 @@ class Sap extends Crm
                 return true;
             }
 
-            Integration::error($this, Craft::t('formie-sap-integration', 'Connection test failed with status code: {code}', [
+            Integration::error($this, Craft::t('formie-sap-integration', 'Connection test failed with status code: {code}.', [
                 'code' => $statusCode,
             ]));
             return false;
