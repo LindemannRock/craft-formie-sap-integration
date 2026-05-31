@@ -20,7 +20,7 @@ return [
     '- None -' => '- Aucun -',
 
     // Controller messages
-    'Connection test failed with status code: {code}' => 'Le test de connexion a échoué avec le code de statut : {code}',
+    'Connection test failed with status code: {code}.' => 'Le test de connexion a échoué avec le code de statut : {code}.',
     'Unable to obtain access token.' => 'Impossible d\'obtenir le jeton d\'accès.',
 
     // Validation messages

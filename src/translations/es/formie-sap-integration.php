@@ -20,7 +20,7 @@ return [
     '- None -' => '- Ninguno -',
 
     // Controller messages
-    'Connection test failed with status code: {code}' => 'La prueba de conexión falló con el código de estado: {code}',
+    'Connection test failed with status code: {code}.' => 'La prueba de conexión falló con el código de estado: {code}.',
     'Unable to obtain access token.' => 'No se pudo obtener el token de acceso.',
 
     // Validation messages

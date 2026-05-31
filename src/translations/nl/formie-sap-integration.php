@@ -20,7 +20,7 @@ return [
     '- None -' => '- Geen -',
 
     // Controller messages
-    'Connection test failed with status code: {code}' => 'Verbindingstest mislukt met statuscode: {code}',
+    'Connection test failed with status code: {code}.' => 'Verbindingstest mislukt met statuscode: {code}.',
     'Unable to obtain access token.' => 'Kan toegangstoken niet ophalen.',
 
     // Validation messages

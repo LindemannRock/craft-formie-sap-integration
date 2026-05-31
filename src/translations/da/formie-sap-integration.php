@@ -20,7 +20,7 @@ return [
     '- None -' => '- Ingen -',
 
     // Controller messages
-    'Connection test failed with status code: {code}' => 'Forbindelsestesten mislykkedes med statuskode: {code}',
+    'Connection test failed with status code: {code}.' => 'Forbindelsestesten mislykkedes med statuskode: {code}.',
     'Unable to obtain access token.' => 'Det var ikke muligt at hente adgangstoken.',
 
     // Validation messages

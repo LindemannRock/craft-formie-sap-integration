@@ -20,7 +20,7 @@ return [
     '- None -' => '- لا شيء -',
 
     // Controller messages
-    'Connection test failed with status code: {code}' => 'فشل اختبار الاتصال برمز الحالة: {code}',
+    'Connection test failed with status code: {code}.' => 'فشل اختبار الاتصال برمز الحالة: {code}.',
     'Unable to obtain access token.' => 'تعذّر الحصول على رمز الوصول.',
 
     // Validation messages

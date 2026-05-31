@@ -20,7 +20,7 @@ return [
     '- None -' => '- なし -',
 
     // Controller messages
-    'Connection test failed with status code: {code}' => '接続テストがステータスコード {code} で失敗しました。',
+    'Connection test failed with status code: {code}.' => '接続テストがステータスコード {code} で失敗しました。',
     'Unable to obtain access token.' => 'アクセストークンを取得できませんでした。',
 
     // Validation messages
