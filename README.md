@@ -91,6 +91,8 @@ SAP_OAUTH_SCOPE=customer_data:write,forms:submit
 
 ## Configuration
 
+Plugin settings at **Settings → Plugins → Formie SAP Integration** are validated inline and are not saved when invalid.
+
 ### Step 1: Create SAP Integration
 
 1. Go to **Formie → Settings → Integrations**
