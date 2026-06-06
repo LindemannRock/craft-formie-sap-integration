@@ -40,7 +40,7 @@ return [
     'API testing and troubleshooting' => 'API テストとトラブルシューティング',
     'Documentation' => 'ドキュメント',
     'Environment variable examples' => '環境変数の例',
-    'For setup instructions and API testing, see:' => 'セットアップ手順と API テストについては、こちらを参照してください:',
+    'For setup instructions and API testing, see:' => 'セットアップ手順と API テストについては、こちらを参照してください :',
 
     // Integration: Setup guide
     'Choose between staging or production' => 'ステージングまたはプロダクションを選択してください',
@@ -50,7 +50,7 @@ return [
     'Step 1. Configure SAP Integration' => 'ステップ 1. SAP インテグレーションを設定する',
     'Step 2. Test Connection' => 'ステップ 2. 接続をテストする',
     'The specific endpoint for form submissions (e.g., {path})' => 'フォーム送信用の特定のエンドポイント (例: {path})',
-    'You\'ll need:' => '以下が必要です:',
+    'You\'ll need:' => '以下が必要です :',
     'Your OAuth application client ID' => 'OAuth アプリケーションのクライアント ID',
     'Your OAuth application client secret' => 'OAuth アプリケーションのクライアントシークレット',
 
