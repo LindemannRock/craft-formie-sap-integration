@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.6.0](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.5.0...v3.6.0) - 2026-06-07
+
+
+### Added
+
+* add static analysis script for CI workflow ([ab0e1ae](https://github.com/LindemannRock/craft-formie-sap-integration/commit/ab0e1aeec288433d5f2d7e99df2f104733e6e900))
+* **settings:** add settings post error handling in setAttributes method ([4e7a25f](https://github.com/LindemannRock/craft-formie-sap-integration/commit/4e7a25f456d949d394f06a7a2df616ddd726e782))
+
+
+### Fixed
+
+* correct connection test error message formatting ([ff61758](https://github.com/LindemannRock/craft-formie-sap-integration/commit/ff61758b48c6362abd631182afeae9b610cdec1f))
+* **i18n:** correct connection test error message punctuation in translations ([0a57911](https://github.com/LindemannRock/craft-formie-sap-integration/commit/0a57911a7e6c06cf2f2ea2350ab0981c55934117))
+* **i18n:** correct punctuation in Japanese translation strings ([b8aa085](https://github.com/LindemannRock/craft-formie-sap-integration/commit/b8aa0854131586058d440b1e304d62a9e484b00e))
+
 ## [3.5.0](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.4.0...v3.5.0) - 2026-05-22
 
 
