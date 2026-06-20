@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.6.1](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.6.0...v3.6.1) - 2026-06-20
+
+
+### Fixed
+
+* **i18n:** correct translations across multiple locales ([2130cf6](https://github.com/LindemannRock/craft-formie-sap-integration/commit/2130cf69ae35a84736cc8998c97c9ebbefaa233d))
+
 ## [3.6.0](https://github.com/LindemannRock/craft-formie-sap-integration/compare/v3.5.0...v3.6.0) - 2026-06-07
 
 
